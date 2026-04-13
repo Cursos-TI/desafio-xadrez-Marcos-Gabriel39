@@ -1,67 +1,50 @@
 #include <stdio.h>
 
-int main() {
-    
-    int i;
-    int casasTorre = 5;
-    int casasBispo = 5;
-    int casasRainha = 8;
-    int casasCavalo = 1;
-
-    // ================================
-    // MOVIMENTO DA TORRE (FOR)
-    // Torre: 5 casas para a direita
-    // ================================
-    printf("Movimento da Torre:\n");
-
-    for (i = 1; i <= casasTorre; i++) {
+void casastorre(int casas){
+    if (casas > 0)
+    {
         printf("Direita\n");
+        casastorre(casas - 1);
     }
-
-    // Linha em branco para separar as saídas
-    printf("\n");
-
-    // ================================
-    // MOVIMENTO DO BISPO (WHILE)
-    // Bispo: 5 casas na diagonal
-    // para cima e à direita
-    // ================================
-    printf("Movimento do Bispo:\n");
-
-    i = 1;
-    while (i <= casasBispo) {
-        printf("Cima, Direita\n");
-        i++;
+}
+void casasbispo(int casas){
+    if (casas > 0)
+    {
+        printf("Direita, Cima\n");
+        casasbispo(casas - 1);
     }
-
-    // Linha em branco para separar as saídas
-    printf("\n");
-
-    // ================================
-    // MOVIMENTO DA RAINHA (DO-WHILE)
-    // Rainha: 8 casas para a esquerda
-    // ================================
-    printf("Movimento da Rainha:\n");
-
-    i = 1;
-    do {
+} 
+void casasrainha(int casas){
+    if (casas > 0)
+    {
         printf("Esquerda\n");
-        i++;
-    } while (i <= casasRainha);
-
-    // ================================
-    // MOVIMENTO DA CAVALO (WHILE e FOR)
-    // Torre: 2 casas para a baixo e 1 pra esquerda
-    // ================================
-    printf("Movimento do Cavalo:\n");
-
-    while (casasCavalo--){
-        for(i = 0; i < 2; i++){
-
-        printf("Baixo\n");
+        casasrainha(casas - 1);
     }
-        printf("Esquerda\n");
+} 
+void casascavalo(int casas){
+    if (casas > 0)
+    {
+        printf("Cima\n");
+        printf("Cima\n");
+        printf("Direita\n");
+        printf("\n");
+        casascavalo(casas - 1);
     }
+}
+
+int main(){
+
+    printf("Movimentação Torre:\n");
+    casastorre(5);
+    printf("\n");
+    printf("Movimentação Bispo:\n");
+    casasbispo(5);
+    printf("\n");
+    printf("Movimentação Rainha:\n");
+    casasrainha(8);
+    printf("\n");
+    printf("Movimentação Cavalo:\n");
+    casascavalo(1);
 
     return 0;
 }
